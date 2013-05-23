@@ -19,8 +19,6 @@ public class testDriver {
 		GamePiece test = new GamePiece(true, 1);
 		System.out.println(test.getPerm());
 		System.out.println(test.getOwner());
-		
-		
 	}
 
 }
