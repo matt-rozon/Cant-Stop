@@ -33,19 +33,14 @@ public class GameManager {
 	 * @return the server's response
 	 */
 	public String userChoice(String choice){
-		if(choice.equals("roll")){
+		if(choice.equals("roll"))
 			return this.roll();
-		}
-		else if(choice.equals("stop")){
+		else if(choice.equals("stop"))
 			return this.stopTurn();
-		}
-		else if(choice.equals("crap")){
-			this.crapOut();
-			return "ack";
-		}
-		else{
+		else if(choice.equals("crap"))
+			return this.crapOut();
+		else
 			return this.movePiece(choice);
-		}
 	}
 	
 	/**
@@ -57,7 +52,7 @@ public class GameManager {
 	}
 	
 	/**
-	 * Moves a player's game piece.
+	 * Moves a player's game pieces along the columns chosen.
 	 * @param choices the columns the player wishes to move up
 	 * @return the server's response
 	 */
@@ -106,8 +101,9 @@ public class GameManager {
 	
 	/**
 	 * Ends the current player's turn and removes their last round's progress.
+	 * @return the server's response
 	 */
-	private void crapOut(){
+	private String crapOut(){
 		for(int col = 2; col <= 12; col++){
 			board.removePiece(col, player);
 		}
@@ -115,5 +111,6 @@ public class GameManager {
 			player = 2;
 		else
 			player = 1;
+		return "ack";
 	}
 }

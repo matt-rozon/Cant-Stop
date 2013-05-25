@@ -37,7 +37,7 @@ public class IOManager {
 	        System.exit(-1);
 	    }
 		
-		GameManager game = null;
+		GameManager game = new GameManager();
 		BufferedReader inOne = null;
 	    PrintWriter outOne = null;
 	    BufferedReader inTwo = null;
@@ -52,10 +52,56 @@ public class IOManager {
 	        outTwo = new PrintWriter
 	                (incomTwo.getOutputStream(), true);
 	        
-	        outOne.println("P1");
-	        outTwo.println("P2");
+	        outOne.println("1");
+	        outTwo.println("2");
 	        
-	        game = new GameManager();
+	        boolean gameOver = false;
+	        boolean turnOver = false;
+	        String line = "";
+	        String response = "";
+	        while(!gameOver){
+	        	while(!turnOver){
+	        		line = inOne.readLine();
+	        		response = game.userChoice(line);
+	        		outOne.println(response);
+	        		if((response.equals("ack") && line.equals("stop")) ||
+	        				(response.equals("ack") && line.equals("crap"))){
+	        			outTwo.println("go");
+	        			turnOver = true;
+	        		}
+	        		else if(response.equals("you won")){
+	        			outTwo.println("you lose");
+	        			gameOver = true;
+	        			break;
+	        		}
+	        		else if(!response.equals("err")){
+	        			outTwo.println(response);
+	        		}
+	        	}
+	        	if(gameOver)
+	        		break;
+	        	
+	        	turnOver = false;
+	        	while(!turnOver){
+	        		line = inTwo.readLine();
+	        		response = game.userChoice(line);
+	        		outTwo.println(response);
+	        		if((response.equals("ack") && line.equals("stop")) ||
+	        				(response.equals("ack") && line.equals("crap"))){
+	        			outOne.println("go");
+	        			turnOver = true;
+	        		}
+	        		else if(response.equals("you won")){
+	        			outOne.println("you lose");
+	        			gameOver = true;
+	        			break;
+	        		}
+	        		else if(!response.equals("err")){
+	        			outOne.println(response);
+	        		}
+	        	}
+	        	turnOver = false;
+	        }//Game over
 	    }
 	    catch (IOException e) {
 	         System.err.println("Unable to read from or write to the client: "
