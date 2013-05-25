@@ -36,6 +36,8 @@ public class IOManager {
 	        System.err.println("Accept failed: " + e.getMessage());
 	        System.exit(-1);
 	    }
+		
+		GameManager game = null;
 		BufferedReader inOne = null;
 	    PrintWriter outOne = null;
 	    BufferedReader inTwo = null;
@@ -53,6 +55,7 @@ public class IOManager {
 	        outOne.println("P1");
 	        outTwo.println("P2");
 	        
+	        game = new GameManager();
 	    }
 	    catch (IOException e) {
 	         System.err.println("Unable to read from or write to the client: "

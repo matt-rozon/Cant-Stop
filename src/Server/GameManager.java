@@ -44,10 +44,31 @@ public class GameManager {
 	}
 	
 	public String stopTurn(){
-		
+		if(board.winCheck(player)){
+			return "winner";
+		}
+		else{
+			int pieces = board.getCounter();
+			for(int count = 1; count <= pieces; count++){
+				board.removePiece(placeholder, perm, count);
+				board.addPiece(columnNum, perm, count);
+			}
+			if(player == 1)
+				player = 2;
+			else
+				player = 1;
+		}
 	}
 	
 	public String crapOut(){
-		
+		int pieces = board.getCounter();
+		for(int count = 1; count <= pieces; count++){
+			board.removePiece(placeholder, perm, count);
+			board.addPiece(columnNum, perm, count);
+		}
+		if(player == 1)
+			player = 2;
+		else
+			player = 1;
 	}
 }
