@@ -4,7 +4,11 @@
 package Server;
 
 /**
- * @author Administrator
+ * Where the game logic is located. The user enters their course of action 
+ * and the GameManager reacts accordingly by calling the required methods.
+ * 
+ * @author AlexanderMacKenzie
+ * @author Matthew Rozon
  *
  */
 import java.util.Scanner;
@@ -23,7 +27,41 @@ public class GameManager {
 		player = 1;
 	}
 	
-	public String movePiece(String choices){
+	/**
+	 * Checks what the user's input is and calls the appropriate method.
+	 * @param choice the user's input
+	 * @return the server's response
+	 */
+	public String userChoice(String choice){
+		if(choice.equals("roll")){
+			return this.roll();
+		}
+		else if(choice.equals("stop")){
+			return this.stopTurn();
+		}
+		else if(choice.equals("crap")){
+			this.crapOut();
+			return "ack";
+		}
+		else{
+			return this.movePiece(choice);
+		}
+	}
+	
+	/**
+	 * Rolls the dice.
+	 * @return the dice roll results
+	 */
+	private String roll(){
+		return dice.rollDice();
+	}
+	
+	/**
+	 * Moves a player's game piece.
+	 * @param choices the columns the player wishes to move up
+	 * @return the server's response
+	 */
+	private String movePiece(String choices){
 		if(dice.checkLastSums(choices)){
 			Scanner sc = new Scanner(choices);
 			sc.useDelimiter(", ");
@@ -48,21 +86,28 @@ public class GameManager {
 			return "err";
 	}
 	
-	public boolean stopTurn(){
+	/**
+	 * Ends the current player's turn and checks to see if there is a winner.
+	 * @return if a player has won the game
+	 */
+	private String stopTurn(){
 		board.tempToPerm(player);
 		if(board.winCheck(player)){
-			return true;
+			return "you won";
 		}
 		else{
 			if(player == 1)
 				player = 2;
 			else
 				player = 1;
-			return false;
+			return "ack";
 		}
 	}
 	
-	public boolean crapOut(){
+	/**
+	 * Ends the current player's turn and removes their last round's progress.
+	 */
+	private void crapOut(){
 		for(int col = 2; col <= 12; col++){
 			board.removePiece(col, player);
 		}
@@ -70,6 +115,5 @@ public class GameManager {
 			player = 2;
 		else
 			player = 1;
-		return true;
 	}
 }

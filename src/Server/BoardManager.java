@@ -4,7 +4,11 @@
 package Server;
 
 /**
- * @author Administrator
+ * Represents the game board itself. Each player's game pieces
+ * are stored and moved by the BoardManager.
+ * 
+ * @author Alex MacKenzie
+ * @author Matthew Rozon
  *
  */
 public class BoardManager {
@@ -21,6 +25,9 @@ public class BoardManager {
 	private GamePiece[][] boardCol11;
 	private GamePiece[][] boardCol12;
 	
+	/**
+	 * Class constructor.
+	 */
 	public BoardManager(){
 		tempCounter = 0;
 		boardCol2 = new GamePiece[3][2];
@@ -55,72 +62,122 @@ public class BoardManager {
 					break; 
 				case 3:
 					for(int i = 0; i < boardCol3.length; i++)
-						if(boardCol3[i][player-1] != null)
-							rowNum = i;
-					boardCol3[rowNum+1][player-1] = newIn;
+						if(boardCol3[i][player-1] != null && boardCol3[i][player-1].getPerm())
+							highestRow = i;
+					if(highestRow > rowNum)
+						boardCol3[highestRow][player-1] = newIn;
+					else if(rowNum+1 > boardCol3.length)
+						boardCol3[rowNum+1][player-1] = newIn;
+					else
+						boardCol3[rowNum][player-1] = newIn;
 					tempCounter++;
 					break;
 				case 4:
 					for(int i = 0; i < boardCol4.length; i++)
-						if(boardCol4[i][player-1] != null)
-							rowNum = i;
-					boardCol4[rowNum+1][player-1] = newIn;
+						if(boardCol4[i][player-1] != null && boardCol4[i][player-1].getPerm())
+							highestRow = i;
+					if(highestRow > rowNum)
+						boardCol4[highestRow][player-1] = newIn;
+					else if(rowNum+1 > boardCol4.length)
+						boardCol4[rowNum+1][player-1] = newIn;
+					else
+						boardCol4[rowNum][player-1] = newIn;
 					tempCounter++;
 					break;
 				case 5:
 					for(int i = 0; i < boardCol5.length; i++)
-						if(boardCol5[i][player-1] != null)
-							rowNum = i;
-					boardCol5[rowNum+1][player-1] = newIn;
+						if(boardCol5[i][player-1] != null && boardCol5[i][player-1].getPerm())
+							highestRow = i;
+					if(highestRow > rowNum)
+						boardCol5[highestRow][player-1] = newIn;
+					else if(rowNum+1 > boardCol5.length)
+						boardCol5[rowNum+1][player-1] = newIn;
+					else
+						boardCol5[rowNum][player-1] = newIn;
 					tempCounter++;
 					break;
 				case 6:
 					for(int i = 0; i < boardCol6.length; i++)
-						if(boardCol6[i][player-1] != null)
-							rowNum = i;
-					boardCol6[rowNum+1][player-1] = newIn;
+						if(boardCol6[i][player-1] != null && boardCol6[i][player-1].getPerm())
+							highestRow = i;
+					if(highestRow > rowNum)
+						boardCol6[highestRow][player-1] = newIn;
+					else if(rowNum+1 > boardCol6.length)
+						boardCol6[rowNum+1][player-1] = newIn;
+					else
+						boardCol6[rowNum][player-1] = newIn;
 					tempCounter++;
 					break;
 				case 7:
 					for(int i = 0; i < boardCol7.length; i++)
-						if(boardCol7[i][player-1] != null)
-							rowNum = i;
-					boardCol7[rowNum+1][player-1] = newIn;
+						if(boardCol7[i][player-1] != null && boardCol7[i][player-1].getPerm())
+							highestRow = i;
+					if(highestRow > rowNum)
+						boardCol7[highestRow][player-1] = newIn;
+					else if(rowNum+1 > boardCol7.length)
+						boardCol7[rowNum+1][player-1] = newIn;
+					else
+						boardCol7[rowNum][player-1] = newIn;
 					tempCounter++;
 					break;
 				case 8:
 					for(int i = 0; i < boardCol8.length; i++)
-						if(boardCol8[i][player-1] != null)
-							rowNum = i;
-					boardCol8[rowNum+1][player-1] = newIn;
+						if(boardCol8[i][player-1] != null && boardCol8[i][player-1].getPerm())
+							highestRow = i;
+					if(highestRow > rowNum)
+						boardCol8[highestRow][player-1] = newIn;
+					else if(rowNum+1 > boardCol8.length)
+						boardCol8[rowNum+1][player-1] = newIn;
+					else
+						boardCol8[rowNum][player-1] = newIn;
 					tempCounter++;
 					break;
 				case 9:
 					for(int i = 0; i < boardCol9.length; i++)
-						if(boardCol9[i][player-1] != null)
-							rowNum = i;
-					boardCol9[rowNum+1][player-1] = newIn;
+						if(boardCol9[i][player-1] != null && boardCol9[i][player-1].getPerm())
+							highestRow = i;
+					if(highestRow > rowNum)
+						boardCol9[highestRow][player-1] = newIn;
+					else if(rowNum+1 > boardCol9.length)
+						boardCol9[rowNum+1][player-1] = newIn;
+					else
+						boardCol9[rowNum][player-1] = newIn;
 					tempCounter++;
 					break;
 				case 10:
 					for(int i = 0; i < boardCol10.length; i++)
-						if(boardCol10[i][player-1] != null)
-							rowNum = i;
-					boardCol10[rowNum+1][player-1] = newIn;
+						if(boardCol10[i][player-1] != null && boardCol10[i][player-1].getPerm())
+							highestRow = i;
+					if(highestRow > rowNum)
+						boardCol10[highestRow][player-1] = newIn;
+					else if(rowNum+1 > boardCol10.length)
+						boardCol10[rowNum+1][player-1] = newIn;
+					else
+						boardCol10[rowNum][player-1] = newIn;
 					tempCounter++;
 					break;
 				case 11:
 					for(int i = 0; i < boardCol11.length; i++)
-						if(boardCol11[i][player-1] != null)
-							rowNum = i;
-					boardCol11[rowNum+1][player-1] = newIn;
+						if(boardCol11[i][player-1] != null && boardCol11[i][player-1].getPerm())
+							highestRow = i;
+					if(highestRow > rowNum)
+						boardCol11[highestRow][player-1] = newIn;
+					else if(rowNum+1 > boardCol11.length)
+						boardCol11[rowNum+1][player-1] = newIn;
+					else
+						boardCol11[rowNum][player-1] = newIn;
 					tempCounter++;
 					break;
 				case 12:
 					for(int i = 0; i < boardCol12.length; i++)
-						if(boardCol12[i][player-1] != null)
-							rowNum = i;
-					boardCol12[rowNum+1][player-1] = newIn;
+						if(boardCol12[i][player-1] != null && boardCol12[i][player-1].getPerm())
+							highestRow = i;
+					if(highestRow > rowNum)
+						boardCol12[highestRow][player-1] = newIn;
+					else if(rowNum+1 > boardCol12.length)
+						boardCol12[rowNum+1][player-1] = newIn;
+					else
+						boardCol12[rowNum][player-1] = newIn;
 					tempCounter++;
 					break;
 				}
@@ -130,6 +187,12 @@ public class BoardManager {
 				return false;		
 	}
 	
+	/**
+	 * Removes a temporary game piece from the board.
+	 * @param columnNum the board column to be removed from
+	 * @param player the player's piece to be removed
+	 * @return the row the piece was removed from
+	 */
 	public int removePiece(int columnNum, int player){
 		int row = -1;
 		if(columnNum >= 2 && columnNum <= 12){
@@ -147,76 +210,101 @@ public class BoardManager {
 					for(int i = 0; i < boardCol3.length; i++)
 						if(boardCol3[i][player-1] != null && !boardCol3[i][player-1].getPerm())
 							row = i;
-					boardCol3[row][player] = null;
-					tempCounter--;
+					if(row>= -1){
+						boardCol3[row][player] = null;
+						tempCounter--;
+					}
 					break;
-				case 4: for(int i = 0; i < boardCol4.length; i++)
-					if(boardCol4[i][player-1] != null && !boardCol4[i][player-1].getPerm())
-						row = i;
-					boardCol4[row][player] = null;
-					tempCounter--;
+				case 4:
+					for(int i = 0; i < boardCol4.length; i++)
+						if(boardCol4[i][player-1] != null && !boardCol4[i][player-1].getPerm())
+							row = i;
+					if(row>= -1){
+						boardCol4[row][player] = null;
+						tempCounter--;
+					}
 					break;
 				case 5:
 					for(int i = 0; i < boardCol5.length; i++)
-					if(boardCol5[i][player-1] != null && !boardCol5[i][player-1].getPerm())
-						row = i;
-					boardCol5[row][player] = null;
-					tempCounter--;
+						if(boardCol5[i][player-1] != null && !boardCol5[i][player-1].getPerm())
+							row = i;
+					if(row>= -1){
+						boardCol5[row][player] = null;
+						tempCounter--;
+					}
 					break;
 				case 6:
 					for(int i = 0; i < boardCol6.length; i++)
 						if(boardCol6[i][player-1] != null && !boardCol6[i][player-1].getPerm())
 							row = i;
-					boardCol6[row][player] = null;
-					tempCounter--;
+					if(row>= -1){
+						boardCol6[row][player] = null;
+						tempCounter--;
+					}
 					break;
 				case 7:
 					for(int i = 0; i < boardCol7.length; i++)
 						if(boardCol7[i][player-1] != null && !boardCol7[i][player-1].getPerm())
 							row = i;
-					boardCol7[row][player] = null;
-					tempCounter--;
+					if(row>= -1){
+						boardCol7[row][player] = null;
+						tempCounter--;
+					}
 					break;
 				case 8: 
 					for(int i = 0; i < boardCol8.length; i++)
 						if(boardCol8[i][player-1] != null && !boardCol8[i][player-1].getPerm())
 							row = i;
-					boardCol8[row][player] = null;
-					tempCounter--;
+					if(row>= -1){
+						boardCol8[row][player] = null;
+						tempCounter--;
+					}
 					break;
 				case 9: 
 					for(int i = 0; i < boardCol9.length; i++)
 						if(boardCol9[i][player-1] != null && !boardCol9[i][player-1].getPerm())
 							row = i;
-					boardCol9[row][player] = null;
-					tempCounter--;
+					if(row>= -1){
+						boardCol9[row][player] = null;
+						tempCounter--;
+					}
 					break;
 				case 10: 
 					for(int i = 0; i < boardCol10.length; i++)
 						if(boardCol10[i][player-1] != null && !boardCol10[i][player-1].getPerm())
 							row = i;
-					boardCol10[row][player] = null;
-					tempCounter--;
+					if(row>= -1){
+						boardCol10[row][player] = null;
+						tempCounter--;
+					}
 					break;
 				case 11: 
 					for(int i = 0; i < boardCol11.length; i++)
 						if(boardCol11[i][player-1] != null && !boardCol11[i][player-1].getPerm())
 							row = i;
-					boardCol11[row][player] = null;
-					tempCounter--;
+					if(row>= -1){
+						boardCol11[row][player] = null;
+						tempCounter--;
+					}
 					break;
 				case 12: 
 					for(int i = 0; i < boardCol12.length; i++)
 						if(boardCol12[i][player-1] != null && !boardCol12[i][player-1].getPerm())
 							row = i;
-					boardCol12[row][player] = null;
-					tempCounter--;
+					if(row>= -1){
+						boardCol12[row][player] = null;
+						tempCounter--;
+					}
 					break;
 			}
 		}
 		return row;
 	}
 	
+	/**
+	 * Makes the player's temporary pieces permanent.
+	 * @param player the player's pieces to be changed
+	 */
 	public void tempToPerm(int player){
 		int row = -1;
 		for(int i = 0; i < boardCol2.length; i++)
@@ -309,6 +397,11 @@ public class BoardManager {
 		
 	}
 	
+	/**
+	 * Checks to see if a player has won the game.
+	 * @param player the player's pieces to be checked
+	 * @return if the player has won
+	 */
 	public boolean winCheck(int player){
 		int conquered = 0;
 		if(boardCol2[boardCol2.length-1][player] != null)
@@ -361,6 +454,11 @@ public class BoardManager {
 			return false;
 	}
 	
+	/**
+	 * Checks to see if a given row has been conquered by either player.
+	 * @param columnNum the board column to be checked
+	 * @return if the column has been conquered
+	 */
 	public boolean checkConquered(int columnNum){
 		if(columnNum >= 2 && columnNum <= 12){
 			switch (columnNum){
@@ -423,6 +521,11 @@ public class BoardManager {
 		}
 		return false;
 	}
+	
+	/**
+	 * Gets the number of temporary game pieces a player has on the board.
+	 * @return the number of temporary pieces in play by the player
+	 */
 	public int getCounter(){
 		return tempCounter;
 	}
