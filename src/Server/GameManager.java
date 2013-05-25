@@ -29,13 +29,18 @@ public class GameManager {
 			sc.useDelimiter(", ");
 			int choiceOne = sc.nextInt();
 			int choiceTwo = sc.nextInt();
+			int removed;
 			if(board.getCounter() <= 3){
-				board.removePiece(choiceOne);
-				board.addPiece(choiceOne, false, player);
+				if(board.checkConquered(choiceOne))
+					return "err";
+				removed = board.removePiece(choiceOne, player);
+				board.addPiece(removed, choiceOne, false, player);
 			}
 			if(board.getCounter() <= 3){
-				board.removePiece(choiceTwo);
-				board.addPiece(choiceTwo, false, player);
+				if(board.checkConquered(choiceOne))
+					return "err";
+				removed = board.removePiece(choiceTwo, player);
+				board.addPiece(removed, choiceTwo, false, player);
 			}
 			return "ack";
 		}
@@ -43,32 +48,28 @@ public class GameManager {
 			return "err";
 	}
 	
-	public String stopTurn(){
+	public boolean stopTurn(){
+		board.tempToPerm(player);
 		if(board.winCheck(player)){
-			return "winner";
+			return true;
 		}
 		else{
-			int pieces = board.getCounter();
-			for(int count = 1; count <= pieces; count++){
-				board.removePiece(placeholder, perm, count);
-				board.addPiece(columnNum, perm, count);
-			}
 			if(player == 1)
 				player = 2;
 			else
 				player = 1;
+			return false;
 		}
 	}
 	
-	public String crapOut(){
-		int pieces = board.getCounter();
-		for(int count = 1; count <= pieces; count++){
-			board.removePiece(placeholder, perm, count);
-			board.addPiece(columnNum, perm, count);
+	public boolean crapOut(){
+		for(int col = 2; col <= 12; col++){
+			board.removePiece(col, player);
 		}
 		if(player == 1)
 			player = 2;
 		else
 			player = 1;
+		return true;
 	}
 }

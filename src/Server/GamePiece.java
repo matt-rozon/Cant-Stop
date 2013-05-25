@@ -34,6 +34,10 @@ public class GamePiece {
 		return permanent;
 	}
 	
+	public void setPerm(boolean perm){
+		permanent = perm;
+	}
+	
 	/**
 	 * Gets the owner of the game piece.
 	 * 
