@@ -4,7 +4,7 @@
 package Server;
 
 /**
- * Represents the game board itself. Each player's game pieces
+ * The game board for the Can't Stop board game. Each player's game pieces
  * are stored and moved by the BoardManager.
  * 
  * @author Alex MacKenzie
@@ -201,7 +201,7 @@ public class BoardManager {
 					for(int i = 0; i < boardCol2.length; i++)
 						if(boardCol2[i][player-1] != null && !boardCol2[i][player-1].getPerm())
 							row = i;
-					if(row>= -1){
+					if(row> -1){
 						boardCol2[row][player] = null;
 						tempCounter--;
 					}
@@ -210,7 +210,7 @@ public class BoardManager {
 					for(int i = 0; i < boardCol3.length; i++)
 						if(boardCol3[i][player-1] != null && !boardCol3[i][player-1].getPerm())
 							row = i;
-					if(row>= -1){
+					if(row> -1){
 						boardCol3[row][player] = null;
 						tempCounter--;
 					}
@@ -219,7 +219,7 @@ public class BoardManager {
 					for(int i = 0; i < boardCol4.length; i++)
 						if(boardCol4[i][player-1] != null && !boardCol4[i][player-1].getPerm())
 							row = i;
-					if(row>= -1){
+					if(row> -1){
 						boardCol4[row][player] = null;
 						tempCounter--;
 					}
@@ -228,7 +228,7 @@ public class BoardManager {
 					for(int i = 0; i < boardCol5.length; i++)
 						if(boardCol5[i][player-1] != null && !boardCol5[i][player-1].getPerm())
 							row = i;
-					if(row>= -1){
+					if(row> -1){
 						boardCol5[row][player] = null;
 						tempCounter--;
 					}
@@ -237,7 +237,7 @@ public class BoardManager {
 					for(int i = 0; i < boardCol6.length; i++)
 						if(boardCol6[i][player-1] != null && !boardCol6[i][player-1].getPerm())
 							row = i;
-					if(row>= -1){
+					if(row> -1){
 						boardCol6[row][player] = null;
 						tempCounter--;
 					}
@@ -246,7 +246,7 @@ public class BoardManager {
 					for(int i = 0; i < boardCol7.length; i++)
 						if(boardCol7[i][player-1] != null && !boardCol7[i][player-1].getPerm())
 							row = i;
-					if(row>= -1){
+					if(row> -1){
 						boardCol7[row][player] = null;
 						tempCounter--;
 					}
@@ -255,7 +255,7 @@ public class BoardManager {
 					for(int i = 0; i < boardCol8.length; i++)
 						if(boardCol8[i][player-1] != null && !boardCol8[i][player-1].getPerm())
 							row = i;
-					if(row>= -1){
+					if(row> -1){
 						boardCol8[row][player] = null;
 						tempCounter--;
 					}
@@ -264,7 +264,7 @@ public class BoardManager {
 					for(int i = 0; i < boardCol9.length; i++)
 						if(boardCol9[i][player-1] != null && !boardCol9[i][player-1].getPerm())
 							row = i;
-					if(row>= -1){
+					if(row> -1){
 						boardCol9[row][player] = null;
 						tempCounter--;
 					}
@@ -273,7 +273,7 @@ public class BoardManager {
 					for(int i = 0; i < boardCol10.length; i++)
 						if(boardCol10[i][player-1] != null && !boardCol10[i][player-1].getPerm())
 							row = i;
-					if(row>= -1){
+					if(row> -1){
 						boardCol10[row][player] = null;
 						tempCounter--;
 					}
@@ -282,7 +282,7 @@ public class BoardManager {
 					for(int i = 0; i < boardCol11.length; i++)
 						if(boardCol11[i][player-1] != null && !boardCol11[i][player-1].getPerm())
 							row = i;
-					if(row>= -1){
+					if(row> -1){
 						boardCol11[row][player] = null;
 						tempCounter--;
 					}
@@ -291,7 +291,7 @@ public class BoardManager {
 					for(int i = 0; i < boardCol12.length; i++)
 						if(boardCol12[i][player-1] != null && !boardCol12[i][player-1].getPerm())
 							row = i;
-					if(row>= -1){
+					if(row> -1){
 						boardCol12[row][player] = null;
 						tempCounter--;
 					}
@@ -311,7 +311,7 @@ public class BoardManager {
 			if(boardCol2[i][player-1] != null)
 				row = i;
 		if(row > -1){
-			boardCol2[row+1][player-1].setPerm(true);
+			boardCol2[row][player-1].setPerm(true);
 			row = -1;
 		}
 		
@@ -319,7 +319,7 @@ public class BoardManager {
 			if(boardCol3[i][player-1] != null)
 				row = i;
 		if(row > -1){
-			boardCol3[row+1][player-1].setPerm(true);
+			boardCol3[row][player-1].setPerm(true);
 			row = -1;
 		}
 		
@@ -327,7 +327,7 @@ public class BoardManager {
 			if(boardCol4[i][player-1] != null)
 				row = i;
 		if(row > -1){
-			boardCol4[row+1][player-1].setPerm(true);
+			boardCol4[row][player-1].setPerm(true);
 			row = -1;
 		}
 		
@@ -335,7 +335,7 @@ public class BoardManager {
 			if(boardCol5[i][player-1] != null)
 				row = i;
 		if(row > -1){
-			boardCol5[row+1][player-1].setPerm(true);
+			boardCol5[row][player-1].setPerm(true);
 			row = -1;
 		}
 		
@@ -343,7 +343,7 @@ public class BoardManager {
 			if(boardCol6[i][player-1] != null)
 				row = i;
 		if(row > -1){
-			boardCol6[row+1][player-1].setPerm(true);
+			boardCol6[row][player-1].setPerm(true);
 			row = -1;
 		}
 		
@@ -351,7 +351,7 @@ public class BoardManager {
 			if(boardCol7[i][player-1] != null)
 				row = i;
 		if(row > -1){
-			boardCol7[row+1][player-1].setPerm(true);
+			boardCol7[row][player-1].setPerm(true);
 			row = -1;
 		}
 		
@@ -359,7 +359,7 @@ public class BoardManager {
 			if(boardCol8[i][player-1] != null)
 				row = i;
 		if(row > -1){
-			boardCol8[row+1][player-1].setPerm(true);
+			boardCol8[row][player-1].setPerm(true);
 			row = -1;
 		}
 		
@@ -367,7 +367,7 @@ public class BoardManager {
 			if(boardCol9[i][player-1] != null)
 				row = i;
 		if(row > -1){
-			boardCol9[row+1][player-1].setPerm(true);
+			boardCol9[row][player-1].setPerm(true);
 			row = -1;
 		}
 		
@@ -375,7 +375,7 @@ public class BoardManager {
 			if(boardCol10[i][player-1] != null)
 				row = i;
 		if(row > -1){
-			boardCol10[row+1][player-1].setPerm(true);
+			boardCol10[row][player-1].setPerm(true);
 			row = -1;
 		}
 		
@@ -383,7 +383,7 @@ public class BoardManager {
 			if(boardCol11[i][player-1] != null)
 				row = i;
 		if(row > -1){
-			boardCol11[row+1][player-1].setPerm(true);
+			boardCol11[row][player-1].setPerm(true);
 			row = -1;
 		}
 		
@@ -391,7 +391,7 @@ public class BoardManager {
 			if(boardCol12[i][player-1] != null)
 				row = i;
 		if(row > -1){
-			boardCol12[row+1][player-1].setPerm(true);
+			boardCol12[row][player-1].setPerm(true);
 			row = -1;
 		}
 		
@@ -404,48 +404,48 @@ public class BoardManager {
 	 */
 	public boolean winCheck(int player){
 		int conquered = 0;
-		if(boardCol2[boardCol2.length-1][player] != null)
-			if(boardCol2[boardCol2.length-1][player].getPerm())
+		if(boardCol2[boardCol2.length-1][player-1] != null)
+			if(boardCol2[boardCol2.length-1][player-1].getPerm())
 				conquered++;
 		
-		if(boardCol3[boardCol3.length-1][player] != null)
-			if(boardCol3[boardCol3.length-1][player].getPerm())
+		if(boardCol3[boardCol3.length-1][player-1] != null)
+			if(boardCol3[boardCol3.length-1][player-1].getPerm())
 				conquered++;
 		
-		if(boardCol4[boardCol4.length-1][player] != null)
-			if(boardCol4[boardCol4.length-1][player].getPerm())
+		if(boardCol4[boardCol4.length-1][player-1] != null)
+			if(boardCol4[boardCol4.length-1][player-1].getPerm())
 				conquered++;
 		
-		if(boardCol5[boardCol5.length-1][player] != null)
-			if(boardCol5[boardCol5.length-1][player].getPerm())
+		if(boardCol5[boardCol5.length-1][player-1] != null)
+			if(boardCol5[boardCol5.length-1][player-1].getPerm())
 				conquered++;
 		
-		if(boardCol6[boardCol6.length-1][player] != null)
-			if(boardCol6[boardCol6.length-1][player].getPerm())
+		if(boardCol6[boardCol6.length-1][player-1] != null)
+			if(boardCol6[boardCol6.length-1][player-1].getPerm())
 				conquered++;
 		
-		if(boardCol7[boardCol7.length-1][player] != null)
-			if(boardCol7[boardCol7.length-1][player].getPerm())
+		if(boardCol7[boardCol7.length-1][player-1] != null)
+			if(boardCol7[boardCol7.length-1][player-1].getPerm())
 				conquered++;
 		
-		if(boardCol8[boardCol8.length-1][player] != null)
-			if(boardCol8[boardCol8.length-1][player].getPerm())
+		if(boardCol8[boardCol8.length-1][player-1] != null)
+			if(boardCol8[boardCol8.length-1][player-1].getPerm())
 				conquered++;
 		
-		if(boardCol9[boardCol9.length-1][player] != null)
-			if(boardCol9[boardCol9.length-1][player].getPerm())
+		if(boardCol9[boardCol9.length-1][player-1] != null)
+			if(boardCol9[boardCol9.length-1][player-1].getPerm())
 				conquered++;
 		
-		if(boardCol10[boardCol10.length-1][player] != null)
-			if(boardCol10[boardCol10.length-1][player].getPerm())
+		if(boardCol10[boardCol10.length-1][player-1] != null)
+			if(boardCol10[boardCol10.length-1][player-1].getPerm())
 				conquered++;
 		
-		if(boardCol11[boardCol11.length-1][player] != null)
-			if(boardCol11[boardCol11.length-1][player].getPerm())
+		if(boardCol11[boardCol11.length-1][player-1] != null)
+			if(boardCol11[boardCol11.length-1][player-1].getPerm())
 				conquered++;
 		
-		if(boardCol12[boardCol12.length-1][player] != null)
-			if(boardCol12[boardCol12.length-1][player].getPerm())
+		if(boardCol12[boardCol12.length-1][player-1] != null)
+			if(boardCol12[boardCol12.length-1][player-1].getPerm())
 				conquered++;
 
 		if(conquered >= 3)
@@ -463,60 +463,102 @@ public class BoardManager {
 		if(columnNum >= 2 && columnNum <= 12){
 			switch (columnNum){
 			case 2:
-				if(boardCol2[boardCol2.length-1][0].getPerm())
-					return true;
-				if(boardCol2[boardCol2.length-1][1].getPerm())
-					return true;
+				if(boardCol2[boardCol2.length-1][0] != null)
+					if(boardCol2[boardCol2.length-1][0].getPerm())
+						return true;
+				if(boardCol2[boardCol2.length-1][1] != null)
+					if(boardCol2[boardCol2.length-1][1].getPerm())
+						return true;
+				break;
+				
 			case 3:
-				if(boardCol3[boardCol3.length-1][0].getPerm())
-					return true;
-				if(boardCol3[boardCol3.length-1][1].getPerm())
-					return true;
+				if(boardCol3[boardCol3.length-1][0] != null)
+					if(boardCol3[boardCol3.length-1][0].getPerm())
+						return true;
+				if(boardCol3[boardCol3.length-1][0] != null)
+					if(boardCol3[boardCol3.length-1][1].getPerm())
+						return true;
+				break;
+				
 			case 4:
-				if(boardCol4[boardCol4.length-1][0].getPerm())
-					return true;
-				if(boardCol4[boardCol4.length-1][1].getPerm())
-					return true;
+				if(boardCol4[boardCol4.length-1][0] != null)
+					if(boardCol4[boardCol4.length-1][0].getPerm())
+						return true;
+				if(boardCol4[boardCol4.length-1][0] != null)
+					if(boardCol4[boardCol4.length-1][1].getPerm())
+						return true;
+				break;
+				
 			case 5:
-				if(boardCol5[boardCol5.length-1][0].getPerm())
-					return true;
-				if(boardCol5[boardCol5.length-1][1].getPerm())
-					return true;
+				if(boardCol5[boardCol5.length-1][0] != null)
+					if(boardCol5[boardCol5.length-1][0].getPerm())
+						return true;
+				if(boardCol5[boardCol5.length-1][1] != null)
+					if(boardCol5[boardCol5.length-1][1].getPerm())
+						return true;
+				break;
+				
 			case 6:
-				if(boardCol6[boardCol6.length-1][0].getPerm())
-					return true;
-				if(boardCol6[boardCol6.length-1][1].getPerm())
-					return true;
+				if(boardCol6[boardCol6.length-1][0] != null)
+					if(boardCol6[boardCol6.length-1][0].getPerm())
+						return true;
+				if(boardCol6[boardCol6.length-1][1] != null)
+					if(boardCol6[boardCol6.length-1][1].getPerm())
+						return true;
+				break;
+				
 			case 7:
-				if(boardCol7[boardCol7.length-1][0].getPerm())
-					return true;
-				if(boardCol7[boardCol7.length-1][1].getPerm())
-					return true;
+				if(boardCol7[boardCol7.length-1][0] != null)
+					if(boardCol7[boardCol7.length-1][0].getPerm())
+						return true;
+				if(boardCol7[boardCol7.length-1][1] != null)
+					if(boardCol7[boardCol7.length-1][1].getPerm())
+						return true;
+				break;
+				
 			case 8:
-				if(boardCol8[boardCol8.length-1][0].getPerm())
-					return true;
-				if(boardCol8[boardCol8.length-1][1].getPerm())
-					return true;
+				if(boardCol8[boardCol8.length-1][0] != null)
+					if(boardCol8[boardCol8.length-1][0].getPerm())
+						return true;
+				if(boardCol8[boardCol8.length-1][1] != null)
+					if(boardCol8[boardCol8.length-1][1].getPerm())
+						return true;
+				break;
+				
 			case 9:
-				if(boardCol9[boardCol9.length-1][0].getPerm())
-					return true;
-				if(boardCol9[boardCol9.length-1][1].getPerm())
-					return true;
+				if(boardCol9[boardCol9.length-1][0] != null)
+					if(boardCol9[boardCol9.length-1][0].getPerm())
+						return true;
+				if(boardCol9[boardCol9.length-1][1] != null)
+					if(boardCol9[boardCol9.length-1][1].getPerm())
+						return true;
+				break;
+				
 			case 10:
-				if(boardCol10[boardCol10.length-1][0].getPerm())
-					return true;
-				if(boardCol10[boardCol10.length-1][1].getPerm())
-					return true;
+				if(boardCol10[boardCol10.length-1][0] != null)
+					if(boardCol10[boardCol10.length-1][0].getPerm())
+						return true;
+				if(boardCol10[boardCol10.length-1][1] != null)
+					if(boardCol10[boardCol10.length-1][1].getPerm())
+						return true;
+				break;
+				
 			case 11:
-				if(boardCol11[boardCol11.length-1][0].getPerm())
-					return true;
-				if(boardCol11[boardCol11.length-1][1].getPerm())
-					return true;
+				if(boardCol11[boardCol11.length-1][0] != null)
+					if(boardCol11[boardCol11.length-1][0].getPerm())
+						return true;
+				if(boardCol11[boardCol11.length-1][1] != null)
+					if(boardCol11[boardCol11.length-1][1].getPerm())
+						return true;
+				break;
+				
 			case 12:
-				if(boardCol12[boardCol12.length-1][0].getPerm())
-					return true;
-				if(boardCol12[boardCol12.length-1][1].getPerm())
-					return true;
+				if(boardCol12[boardCol12.length-1][0] != null)
+					if(boardCol12[boardCol12.length-1][0].getPerm())
+						return true;
+				if(boardCol12[boardCol12.length-1][1] != null)
+					if(boardCol12[boardCol12.length-1][1].getPerm())
+						return true;
 			}
 		}
 		return false;

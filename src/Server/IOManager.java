@@ -4,6 +4,8 @@
 package Server;
 
 /**
+ * Controls the input/output for the Can't Stop game. The manager will wait until two players have
+ * connected, then will assign player numbers and begin the game, with Player 1 having first turn. 
  * @author Administrator
  *
  */
@@ -14,7 +16,8 @@ import java.net.*;
 public class IOManager {
 
 	/**
-	 * @param args
+	 * The main method.
+	 * @param args command line arguments
 	 */
 	public static void main(String[] args) {
 		ServerSocket s = null;
@@ -72,10 +75,12 @@ public class IOManager {
 	        		else if(response.equals("you won")){
 	        			outTwo.println("you lose");
 	        			gameOver = true;
-	        			break;
+	        		}
+	        		else if(line.equals("roll")){
+	        			outTwo.println(response);
 	        		}
 	        		else if(!response.equals("err")){
-	        			outTwo.println(response);
+	        			outTwo.println(line);
 	        		}
 	        	}
 	        	if(gameOver)
@@ -94,13 +99,18 @@ public class IOManager {
 	        		else if(response.equals("you won")){
 	        			outOne.println("you lose");
 	        			gameOver = true;
-	        			break;
 	        		}
-	        		else if(!response.equals("err")){
+	        		else if(line.equals("roll")){
 	        			outOne.println(response);
 	        		}
+	        		else if(!response.equals("err")){
+	        			outOne.println(line);
+	        		}
 	        	}
-	        	turnOver = false;
+	        	if(gameOver)
+	        		break;
+	        	else
+	        		turnOver = false;
 	        }//Game over
 	    }
 	    catch (IOException e) {

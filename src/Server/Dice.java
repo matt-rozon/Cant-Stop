@@ -4,7 +4,7 @@
 package Server;
 
 /**
- * Dice is the class that represents the Dice object used by the Can't Stop game.
+ * The dice created and used by the Can't Stop game.
  * 
  * @author Alexander MacKenzie
  * @author Matthew Rozon
@@ -51,11 +51,14 @@ public class Dice {
 		int choiceOne = sc.nextInt();
 		int choiceTwo = sc.nextInt();
 		
-		if(choiceOne == rolls[0] + rolls[1] && choiceTwo == rolls[2] + rolls[3])
+		if(choiceOne == rolls[0] + rolls[1] && choiceTwo == rolls[2] + rolls[3] ||
+				choiceTwo == rolls[0] + rolls[1] && choiceOne == rolls[2] + rolls[3])
 			return true;
-		else if(choiceOne == rolls[0] + rolls[2] && choiceTwo == rolls[1] + rolls[3])
+		else if(choiceOne == rolls[0] + rolls[2] && choiceTwo == rolls[1] + rolls[3] ||
+				choiceTwo == rolls[0] + rolls[2] && choiceOne == rolls[1] + rolls[3])
 			return true;
-		else if(choiceOne == rolls[0] + rolls[3] && choiceTwo == rolls[1] + rolls[2])
+		else if(choiceOne == rolls[0] + rolls[3] && choiceTwo == rolls[1] + rolls[2] ||
+				choiceTwo == rolls[0] + rolls[3] && choiceOne == rolls[1] + rolls[2])
 			return true;
 		else
 			return false;

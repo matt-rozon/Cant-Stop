@@ -9,19 +9,7 @@ public class testDriver {
 	/**
 	 * @param args
 	 */
-	public static void main(String[] args) {
-		/* Scanner sc = new Scanner(System.in);
-		Dice dice = new Dice();
-		String cont = sc.nextLine();
-		while(cont.equals("y")){
-			System.out.println(dice.rollDice());
-			System.out.println(dice.checkLastSums(sc.nextLine()));
-			cont = sc.nextLine();
-		}
-		GamePiece test = new GamePiece(true, 1);
-		System.out.println(test.getPerm());
-		System.out.println(test.getOwner()); */
-		
+	public static void main(String[] args) {		
 		String host = "localhost";
 	      int port = 2043;
 
@@ -60,23 +48,23 @@ public class testDriver {
 				active = false;
 			
 			while (!done){		
-			if (active) {
-				line = userIn.readLine();
-				serverOut.println(line);
-				System.out.println(serverIn.readLine());
-				if (line.equals("stop"))
-					active = false;
+				if (active) {
+					line = userIn.readLine();
+					serverOut.println(line);
+					System.out.println(serverIn.readLine());
+					if (line.equals("stop") || line.equals("crap"))
+						active = false;
 				
-			}
-			
-			else{
-				line = serverIn.readLine();
-				System.out.println(line);
-				if (line.equals("go"))
-					active = true;
 				}
-			if(line.equals("you won") || line.equals("you lost"))
-				done = true;
+			
+				else{
+					line = serverIn.readLine();
+					System.out.println(line);
+					if (line.equals("go"))
+						active = true;
+					}
+				if(line.equals("you won") || line.equals("you lost"))
+					done = true;
 			}//while
 	      }
 	      catch (IOException e) {

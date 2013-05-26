@@ -4,7 +4,7 @@
 package Server;
 
 /**
- * GamePiece is the class that represents the GamePiece objects used by the Can't Stop game.
+ * A game piece used by the Can't Stop game to show player progress.
  * 
  * @author AlexanderMacKenzie
  * @author Matthew Rozon
