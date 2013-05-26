@@ -63,17 +63,35 @@ public class GameManager {
 			int choiceOne = sc.nextInt();
 			int choiceTwo = sc.nextInt();
 			int removed;
-			if(board.getCounter() <= 3){
-				if(board.checkConquered(choiceOne))
-					return "err";
-				removed = board.removePiece(choiceOne, player);
-				board.addPiece(removed, choiceOne, false, player);
+			if(board.checkConquered(choiceOne) && board.checkConquered(choiceTwo))
+				return "err";
+			
+			if(board.getCounter() < 3){
+				if(!board.checkConquered(choiceOne)){
+					removed = board.removePiece(choiceOne, player);
+					board.addPiece(removed, choiceOne, false, player);
+				}
 			}
-			if(board.getCounter() <= 3){
-				if(board.checkConquered(choiceOne))
-					return "err";
-				removed = board.removePiece(choiceTwo, player);
-				board.addPiece(removed, choiceTwo, false, player);
+			else{
+				if(!board.checkConquered(choiceOne)){
+					removed = board.removePiece(choiceOne, player);
+					if(removed > -1)
+						board.addPiece(removed, choiceOne, false, player);
+				}
+			}
+			
+			if(board.getCounter() < 3){
+				if(!board.checkConquered(choiceTwo)){
+					removed = board.removePiece(choiceTwo, player);
+					board.addPiece(removed, choiceTwo, false, player);
+				}
+			}
+			else{
+				if(!board.checkConquered(choiceTwo)){
+					removed = board.removePiece(choiceTwo, player);
+					if(removed > -1)
+						board.addPiece(removed, choiceTwo, false, player);
+				}
 			}
 			return "ack";
 		}
