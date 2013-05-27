@@ -51,14 +51,14 @@ public class Dice {
 		int choiceOne = sc.nextInt();
 		int choiceTwo = sc.nextInt();
 		
-		if(choiceOne == rolls[0] + rolls[1] && choiceTwo == rolls[2] + rolls[3] ||
-				choiceTwo == rolls[0] + rolls[1] && choiceOne == rolls[2] + rolls[3])
+		if((choiceOne == rolls[0] + rolls[1] && choiceTwo == rolls[2] + rolls[3]) ||
+				(choiceTwo == rolls[0] + rolls[1] && choiceOne == rolls[2] + rolls[3]))
 			return true;
-		else if(choiceOne == rolls[0] + rolls[2] && choiceTwo == rolls[1] + rolls[3] ||
-				choiceTwo == rolls[0] + rolls[2] && choiceOne == rolls[1] + rolls[3])
+		else if((choiceOne == rolls[0] + rolls[2] && choiceTwo == rolls[1] + rolls[3]) ||
+				(choiceTwo == rolls[0] + rolls[2] && choiceOne == rolls[1] + rolls[3]))
 			return true;
-		else if(choiceOne == rolls[0] + rolls[3] && choiceTwo == rolls[1] + rolls[2] ||
-				choiceTwo == rolls[0] + rolls[3] && choiceOne == rolls[1] + rolls[2])
+		else if((choiceOne == rolls[0] + rolls[3] && choiceTwo == rolls[1] + rolls[2]) ||
+				(choiceTwo == rolls[0] + rolls[3] && choiceOne == rolls[1] + rolls[2]))
 			return true;
 		else
 			return false;

@@ -6,7 +6,8 @@ package Server;
 /**
  * Controls the input/output for the Can't Stop game. The manager will wait until two players have
  * connected, then will assign player numbers and begin the game, with Player 1 having first turn. 
- * @author Administrator
+ * @author Alexander MacKenzie
+ * @author Matthew Rozon
  *
  */
 

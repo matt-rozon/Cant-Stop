@@ -54,8 +54,8 @@ public class BoardManager {
 							highestRow = i;
 					if(highestRow > rowNum)
 						boardCol2[highestRow][player-1] = newIn;
-					else if(rowNum+1 > boardCol2.length)
-						boardCol2[rowNum+1][player-1] = newIn;
+					else if(rowNum >= boardCol2.length)
+						return false;
 					else
 						boardCol2[rowNum][player-1] = newIn;
 					tempCounter++;
@@ -66,8 +66,8 @@ public class BoardManager {
 							highestRow = i;
 					if(highestRow > rowNum)
 						boardCol3[highestRow][player-1] = newIn;
-					else if(rowNum+1 > boardCol3.length)
-						boardCol3[rowNum+1][player-1] = newIn;
+					else if(rowNum >= boardCol3.length)
+						return false;
 					else
 						boardCol3[rowNum][player-1] = newIn;
 					tempCounter++;
@@ -78,8 +78,8 @@ public class BoardManager {
 							highestRow = i;
 					if(highestRow > rowNum)
 						boardCol4[highestRow][player-1] = newIn;
-					else if(rowNum+1 > boardCol4.length)
-						boardCol4[rowNum+1][player-1] = newIn;
+					else if(rowNum >= boardCol4.length)
+						return false;
 					else
 						boardCol4[rowNum][player-1] = newIn;
 					tempCounter++;
@@ -90,8 +90,8 @@ public class BoardManager {
 							highestRow = i;
 					if(highestRow > rowNum)
 						boardCol5[highestRow][player-1] = newIn;
-					else if(rowNum+1 > boardCol5.length)
-						boardCol5[rowNum+1][player-1] = newIn;
+					else if(rowNum >= boardCol5.length)
+						return false;
 					else
 						boardCol5[rowNum][player-1] = newIn;
 					tempCounter++;
@@ -102,8 +102,8 @@ public class BoardManager {
 							highestRow = i;
 					if(highestRow > rowNum)
 						boardCol6[highestRow][player-1] = newIn;
-					else if(rowNum+1 > boardCol6.length)
-						boardCol6[rowNum+1][player-1] = newIn;
+					else if(rowNum >= boardCol6.length)
+						return false;
 					else
 						boardCol6[rowNum][player-1] = newIn;
 					tempCounter++;
@@ -114,8 +114,8 @@ public class BoardManager {
 							highestRow = i;
 					if(highestRow > rowNum)
 						boardCol7[highestRow][player-1] = newIn;
-					else if(rowNum+1 > boardCol7.length)
-						boardCol7[rowNum+1][player-1] = newIn;
+					else if(rowNum >= boardCol7.length)
+						return false;
 					else
 						boardCol7[rowNum][player-1] = newIn;
 					tempCounter++;
@@ -126,8 +126,8 @@ public class BoardManager {
 							highestRow = i;
 					if(highestRow > rowNum)
 						boardCol8[highestRow][player-1] = newIn;
-					else if(rowNum+1 > boardCol8.length)
-						boardCol8[rowNum+1][player-1] = newIn;
+					else if(rowNum >= boardCol8.length)
+						return false;
 					else
 						boardCol8[rowNum][player-1] = newIn;
 					tempCounter++;
@@ -138,8 +138,8 @@ public class BoardManager {
 							highestRow = i;
 					if(highestRow > rowNum)
 						boardCol9[highestRow][player-1] = newIn;
-					else if(rowNum+1 > boardCol9.length)
-						boardCol9[rowNum+1][player-1] = newIn;
+					else if(rowNum >= boardCol9.length)
+						return false;
 					else
 						boardCol9[rowNum][player-1] = newIn;
 					tempCounter++;
@@ -150,8 +150,8 @@ public class BoardManager {
 							highestRow = i;
 					if(highestRow > rowNum)
 						boardCol10[highestRow][player-1] = newIn;
-					else if(rowNum+1 > boardCol10.length)
-						boardCol10[rowNum+1][player-1] = newIn;
+					else if(rowNum >= boardCol10.length)
+						return false;
 					else
 						boardCol10[rowNum][player-1] = newIn;
 					tempCounter++;
@@ -162,8 +162,8 @@ public class BoardManager {
 							highestRow = i;
 					if(highestRow > rowNum)
 						boardCol11[highestRow][player-1] = newIn;
-					else if(rowNum+1 > boardCol11.length)
-						boardCol11[rowNum+1][player-1] = newIn;
+					else if(rowNum >= boardCol11.length)
+						return false;
 					else
 						boardCol11[rowNum][player-1] = newIn;
 					tempCounter++;
@@ -174,8 +174,8 @@ public class BoardManager {
 							highestRow = i;
 					if(highestRow > rowNum)
 						boardCol12[highestRow][player-1] = newIn;
-					else if(rowNum+1 > boardCol12.length)
-						boardCol12[rowNum+1][player-1] = newIn;
+					else if(rowNum >= boardCol12.length)
+						return false;
 					else
 						boardCol12[rowNum][player-1] = newIn;
 					tempCounter++;
@@ -201,7 +201,7 @@ public class BoardManager {
 					for(int i = 0; i < boardCol2.length; i++)
 						if(boardCol2[i][player-1] != null && !boardCol2[i][player-1].getPerm())
 							row = i;
-					if(row> -1){
+					if(row > -1){
 						boardCol2[row][player] = null;
 						tempCounter--;
 					}
@@ -210,7 +210,7 @@ public class BoardManager {
 					for(int i = 0; i < boardCol3.length; i++)
 						if(boardCol3[i][player-1] != null && !boardCol3[i][player-1].getPerm())
 							row = i;
-					if(row> -1){
+					if(row > -1){
 						boardCol3[row][player] = null;
 						tempCounter--;
 					}
@@ -219,7 +219,7 @@ public class BoardManager {
 					for(int i = 0; i < boardCol4.length; i++)
 						if(boardCol4[i][player-1] != null && !boardCol4[i][player-1].getPerm())
 							row = i;
-					if(row> -1){
+					if(row > -1){
 						boardCol4[row][player] = null;
 						tempCounter--;
 					}
@@ -228,7 +228,7 @@ public class BoardManager {
 					for(int i = 0; i < boardCol5.length; i++)
 						if(boardCol5[i][player-1] != null && !boardCol5[i][player-1].getPerm())
 							row = i;
-					if(row> -1){
+					if(row > -1){
 						boardCol5[row][player] = null;
 						tempCounter--;
 					}
@@ -237,7 +237,7 @@ public class BoardManager {
 					for(int i = 0; i < boardCol6.length; i++)
 						if(boardCol6[i][player-1] != null && !boardCol6[i][player-1].getPerm())
 							row = i;
-					if(row> -1){
+					if(row > -1){
 						boardCol6[row][player] = null;
 						tempCounter--;
 					}
@@ -246,7 +246,7 @@ public class BoardManager {
 					for(int i = 0; i < boardCol7.length; i++)
 						if(boardCol7[i][player-1] != null && !boardCol7[i][player-1].getPerm())
 							row = i;
-					if(row> -1){
+					if(row > -1){
 						boardCol7[row][player] = null;
 						tempCounter--;
 					}
@@ -255,7 +255,7 @@ public class BoardManager {
 					for(int i = 0; i < boardCol8.length; i++)
 						if(boardCol8[i][player-1] != null && !boardCol8[i][player-1].getPerm())
 							row = i;
-					if(row> -1){
+					if(row > -1){
 						boardCol8[row][player] = null;
 						tempCounter--;
 					}
@@ -264,7 +264,7 @@ public class BoardManager {
 					for(int i = 0; i < boardCol9.length; i++)
 						if(boardCol9[i][player-1] != null && !boardCol9[i][player-1].getPerm())
 							row = i;
-					if(row> -1){
+					if(row > -1){
 						boardCol9[row][player] = null;
 						tempCounter--;
 					}
@@ -273,7 +273,7 @@ public class BoardManager {
 					for(int i = 0; i < boardCol10.length; i++)
 						if(boardCol10[i][player-1] != null && !boardCol10[i][player-1].getPerm())
 							row = i;
-					if(row> -1){
+					if(row > -1){
 						boardCol10[row][player] = null;
 						tempCounter--;
 					}
@@ -282,7 +282,7 @@ public class BoardManager {
 					for(int i = 0; i < boardCol11.length; i++)
 						if(boardCol11[i][player-1] != null && !boardCol11[i][player-1].getPerm())
 							row = i;
-					if(row> -1){
+					if(row > -1){
 						boardCol11[row][player] = null;
 						tempCounter--;
 					}
@@ -291,7 +291,7 @@ public class BoardManager {
 					for(int i = 0; i < boardCol12.length; i++)
 						if(boardCol12[i][player-1] != null && !boardCol12[i][player-1].getPerm())
 							row = i;
-					if(row> -1){
+					if(row > -1){
 						boardCol12[row][player] = null;
 						tempCounter--;
 					}
