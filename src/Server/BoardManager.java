@@ -353,7 +353,7 @@ public class BoardManager {
 		for(int i = 0; i < board.length; i++){
 			for(int j = 0; j < board[i].length; j++)
 				if(board[i][j][player-1] != null)
-					row = i;
+					row = j;
 			if(row > -1){
 				board[i][row][player-1].setPerm(true);
 				row = -1;

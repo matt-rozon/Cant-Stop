@@ -33,6 +33,17 @@ public class GameManager {
 	 * @return the server's response
 	 */
 	public String userChoice(String choice){
+		switch (choice){
+			case "roll":
+				return this.roll();
+			case "stop":
+				return this.stopTurn();
+			case "crap":
+				return this.crapOut();
+			default:
+				return this.movePiece(choice);
+		}
+		/*
 		if(choice.equals("roll"))
 			return this.roll();
 		else if(choice.equals("stop"))
@@ -41,6 +52,7 @@ public class GameManager {
 			return this.crapOut();
 		else
 			return this.movePiece(choice);
+			*/
 	}
 	
 	/**
