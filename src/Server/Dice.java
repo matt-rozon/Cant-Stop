@@ -32,11 +32,15 @@ public class Dice {
 	 * @return the user's dice rolls
 	 */
 	public String rollDice(){
-		rolls[0] = generator.nextInt(6) + 1;
+		for(int i = 0; i < 4; i++){
+			rolls[i] = generator.nextInt(6) + 1;
+		}
+		return rolls[0] + ", " + rolls[1] + ", " + rolls[2] + ", " + rolls[3];
+		/*rolls[0] = generator.nextInt(6) + 1;
 		rolls[1] = generator.nextInt(6) + 1;
 		rolls[2] = generator.nextInt(6) + 1;
 		rolls[3] = generator.nextInt(6) + 1;
-		return rolls[0] + ", " + rolls[1] + ", " + rolls[2] + ", " + rolls[3];
+		return rolls[0] + ", " + rolls[1] + ", " + rolls[2] + ", " + rolls[3];*/
 	}
 	
 	/**

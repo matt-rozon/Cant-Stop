@@ -13,6 +13,8 @@ package Server;
  */
 public class BoardManager {
 	private int tempCounter;
+	private GamePiece[][][] board;
+	/*
 	private GamePiece[][] boardCol2;
 	private GamePiece[][] boardCol3;
 	private GamePiece[][] boardCol4;
@@ -24,12 +26,28 @@ public class BoardManager {
 	private GamePiece[][] boardCol10;
 	private GamePiece[][] boardCol11;
 	private GamePiece[][] boardCol12;
+	*/
 	
 	/**
 	 * Class constructor.
 	 */
 	public BoardManager(){
 		tempCounter = 0;
+		board = new GamePiece[11][][];
+		
+		board[0] = new GamePiece[3][2];
+		board[1] = new GamePiece[5][2];
+		board[2] = new GamePiece[7][2];
+		board[3] = new GamePiece[9][2];
+		board[4] = new GamePiece[11][2];
+		board[5] = new GamePiece[13][2];
+		board[6] = new GamePiece[11][2];
+		board[7] = new GamePiece[9][2];
+		board[8] = new GamePiece[7][2];
+		board[9] = new GamePiece[5][2];
+		board[10] = new GamePiece[3][2];
+		
+		/*
 		boardCol2 = new GamePiece[3][2];
 		boardCol3 = new GamePiece[5][2];
 		boardCol4 = new GamePiece[7][2];
@@ -41,12 +59,26 @@ public class BoardManager {
 		boardCol10 = new GamePiece[7][2];
 		boardCol11 = new GamePiece[5][2];
 		boardCol12 = new GamePiece[3][2];
+		*/
 	}
 	
 	public boolean addPiece(int rowNum, int columnNum, boolean perm, int player){
 		GamePiece newIn = new GamePiece(perm, player);
 		int highestRow = 0;
 		if(columnNum >= 2 && columnNum <= 12){
+			for(int i = 0; i < board[columnNum - 2].length; i++)
+				if(board[columnNum - 2][i][player-1] != null && board[columnNum - 2][i][player-1].getPerm())
+					highestRow = i;
+			if(highestRow > rowNum)
+				board[columnNum - 2][highestRow][player-1] = newIn;
+			else if(rowNum >= board[columnNum - 2].length)
+				return false;
+			else
+				board[columnNum - 2][rowNum][player-1] = newIn;
+			tempCounter++;
+			return true;
+		}
+			/*
 			switch (columnNum){
 				case 2:
 					for(int i = 0; i < boardCol2.length; i++)
@@ -182,7 +214,8 @@ public class BoardManager {
 					break;
 				}
 			return true;
-			}
+			*/
+			
 			else
 				return false;		
 	}
@@ -196,6 +229,17 @@ public class BoardManager {
 	public int removePiece(int columnNum, int player){
 		int row = -1;
 		if(columnNum >= 2 && columnNum <= 12){
+			for(int i = 0; i < board[columnNum - 2].length; i++)
+				if(board[columnNum - 2][i][player-1] != null && !board[columnNum - 2][i][player-1].getPerm())
+					row = i;
+			if(row > -1){
+				board[columnNum - 2][row][player] = null;
+				tempCounter--;
+			}
+		}
+		return row;
+
+			/*
 			switch (columnNum){
 				case 2:
 					for(int i = 0; i < boardCol2.length; i++)
@@ -297,8 +341,7 @@ public class BoardManager {
 					}
 					break;
 			}
-		}
-		return row;
+			*/
 	}
 	
 	/**
@@ -307,6 +350,17 @@ public class BoardManager {
 	 */
 	public void tempToPerm(int player){
 		int row = -1;
+		for(int i = 0; i < board.length; i++){
+			for(int j = 0; j < board[i].length; j++)
+				if(board[i][j][player-1] != null)
+					row = i;
+			if(row > -1){
+				board[i][row][player-1].setPerm(true);
+				row = -1;
+			}
+		}
+		
+		/*
 		for(int i = 0; i < boardCol2.length; i++)
 			if(boardCol2[i][player-1] != null)
 				row = i;
@@ -394,6 +448,7 @@ public class BoardManager {
 			boardCol12[row][player-1].setPerm(true);
 			row = -1;
 		}
+		*/
 		
 	}
 	
@@ -404,6 +459,16 @@ public class BoardManager {
 	 */
 	public boolean winCheck(int player){
 		int conquered = 0;
+		for(int i = 0; i < board.length; i++){
+			if(board[i][board[i].length-1][player-1] != null)
+				if(board[i][board[i].length-1][player-1].getPerm())
+					conquered++;
+		}
+		if(conquered >= 3)
+			return true;
+		else
+			return false;
+		/*
 		if(boardCol2[boardCol2.length-1][player-1] != null)
 			if(boardCol2[boardCol2.length-1][player-1].getPerm())
 				conquered++;
@@ -447,11 +512,8 @@ public class BoardManager {
 		if(boardCol12[boardCol12.length-1][player-1] != null)
 			if(boardCol12[boardCol12.length-1][player-1].getPerm())
 				conquered++;
+		*/
 
-		if(conquered >= 3)
-			return true;
-		else
-			return false;
 	}
 	
 	/**
@@ -461,6 +523,17 @@ public class BoardManager {
 	 */
 	public boolean checkConquered(int columnNum){
 		if(columnNum >= 2 && columnNum <= 12){
+			for(int i = 0; i < board.length; i++){
+				if(board[i][board[i].length-1][0] != null)
+					if(board[i][board[i].length-1][0].getPerm())
+						return true;
+				if(board[i][board[i].length-1][1] != null)
+					if(board[i][board[i].length-1][1].getPerm())
+						return true;
+			}
+		}
+		return false;
+		/*
 			switch (columnNum){
 			case 2:
 				if(boardCol2[boardCol2.length-1][0] != null)
@@ -560,8 +633,8 @@ public class BoardManager {
 					if(boardCol12[boardCol12.length-1][1].getPerm())
 						return true;
 			}
-		}
-		return false;
+			*/
+		
 	}
 	
 	/**
