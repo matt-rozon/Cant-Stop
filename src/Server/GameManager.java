@@ -39,6 +39,8 @@ public class GameManager {
 			case "stop":
 				return this.stopTurn();
 			case "crap":
+				if(board.getCounter() < 3)
+					return "err";
 				return this.crapOut();
 			default:
 				return this.movePiece(choice);

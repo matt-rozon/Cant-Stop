@@ -75,6 +75,7 @@ public class IOManager {
 	        		}
 	        		else if(response.equals("you won")){
 	        			outTwo.println("you lose");
+	        			turnOver = true;
 	        			gameOver = true;
 	        		}
 	        		else if(line.equals("roll")){
@@ -99,6 +100,7 @@ public class IOManager {
 	        		}
 	        		else if(response.equals("you won")){
 	        			outOne.println("you lose");
+	        			turnOver = true;
 	        			gameOver = true;
 	        		}
 	        		else if(line.equals("roll")){
@@ -108,10 +110,7 @@ public class IOManager {
 	        			outOne.println(line);
 	        		}
 	        	}
-	        	if(gameOver)
-	        		break;
-	        	else
-	        		turnOver = false;
+	        	turnOver = false;
 	        }//Game over
 	    }
 	    catch (IOException e) {
