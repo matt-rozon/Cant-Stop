@@ -123,6 +123,7 @@ public class GameManager {
 			return "you won";
 		}
 		else{
+			board.resetCounter();
 			if(player == 1)
 				player = 2;
 			else
@@ -139,6 +140,7 @@ public class GameManager {
 		for(int col = 2; col <= 12; col++){
 			board.removePiece(col, player);
 		}
+		board.resetCounter();
 		if(player == 1)
 			player = 2;
 		else

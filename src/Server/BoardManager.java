@@ -523,14 +523,15 @@ public class BoardManager {
 	 */
 	public boolean checkConquered(int columnNum){
 		if(columnNum >= 2 && columnNum <= 12){
-			for(int i = 0; i < board.length; i++){
+			int i = columnNum - 2;
+			//for(int i = 0; i < board.length; i++){
 				if(board[i][board[i].length-1][0] != null)
 					if(board[i][board[i].length-1][0].getPerm())
 						return true;
 				if(board[i][board[i].length-1][1] != null)
 					if(board[i][board[i].length-1][1].getPerm())
 						return true;
-			}
+			//}
 		}
 		return false;
 		/*
@@ -643,5 +644,12 @@ public class BoardManager {
 	 */
 	public int getCounter(){
 		return tempCounter;
+	}
+	
+	/**
+	 * Resets the counter tracking the number of game pieces a player has on the board.
+	 */
+	public void resetCounter(){
+		tempCounter = 0;
 	}
 }

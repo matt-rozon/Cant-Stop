@@ -50,10 +50,19 @@ public class Dice {
 	 * @return if the choices are valid
 	 */
 	public boolean checkLastSums(String choices){
+		int choiceOne, choiceTwo;
 		sc = new Scanner(choices);
 		sc.useDelimiter(", ");
-		int choiceOne = sc.nextInt();
-		int choiceTwo = sc.nextInt();
+		
+		if(sc.hasNextInt())
+			choiceOne = sc.nextInt();
+		else
+			return false;
+		
+		if(sc.hasNextInt())
+			choiceTwo = sc.nextInt();
+		else
+			return false;
 		
 		if((choiceOne == rolls[0] + rolls[1] && choiceTwo == rolls[2] + rolls[3]) ||
 				(choiceTwo == rolls[0] + rolls[1] && choiceOne == rolls[2] + rolls[3]))
