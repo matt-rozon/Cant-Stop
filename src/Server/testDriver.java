@@ -48,11 +48,12 @@ public class testDriver {
 				active = false;
 			
 			while (!done){		
-				if (active) {
+				if (active){
 					line = userIn.readLine();
 					serverOut.println(line);
-					System.out.println(serverIn.readLine());
-					if (line.equals("stop") || line.equals("crap"))
+					String temp = serverIn.readLine();
+					System.out.println(temp);
+					if ((line.equals("stop") || line.equals("crap")) && (!temp.equals("err")))
 						active = false;
 				
 				}

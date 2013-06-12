@@ -82,7 +82,11 @@ public static void swap2(){
 	
 
 	
+<<<<<<< HEAD
 public static void connect() throws IOException{
+=======
+public static String connect(String newRet, String name, String pass){
+>>>>>>> 2c8e611a9c02a3bcbe0313a4095e9b2d232c6c60
 	String host = "localhost";
     int port = 2043;
 
@@ -100,6 +104,7 @@ public static void connect() throws IOException{
                          + host + " on port: " + port);
        System.exit(-1);
     }
+<<<<<<< HEAD
     try {         
        serverIn = new BufferedReader
                (new InputStreamReader(s.getInputStream()));
@@ -142,6 +147,25 @@ public static void connect() throws IOException{
 			done = true;
 	}
    
+=======
+    try {
+    	serverIn = new BufferedReader(new InputStreamReader(s.getInputStream()));
+    	userIn = new BufferedReader(new InputStreamReader(System.in));
+    	serverOut = new PrintWriter(s.getOutputStream(), true);
+    	
+    	serverOut.println(newRet + "," + name);   	
+    	String line = serverIn.readLine();
+    	if(!line.equals("ack"))
+    		return line;
+    	serverOut.println(pass);
+		System.out.println(line);
+		return line;		
+    }
+    catch (IOException e) {
+        System.out.println("Problem reading or writing:" + e.getMessage());
+        return "";
+    }
+>>>>>>> 2c8e611a9c02a3bcbe0313a4095e9b2d232c6c60
 
 	
 }}
