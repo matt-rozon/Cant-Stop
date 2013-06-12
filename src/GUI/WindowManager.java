@@ -80,7 +80,7 @@ public static void swap2(){
 	
 
 	
-public static void connect(){
+public static String connect(String newRet, String name, String pass){
 	String host = "localhost";
     int port = 2043;
 
@@ -98,26 +98,23 @@ public static void connect(){
                          + host + " on port: " + port);
        System.exit(-1);
     }
-    try {         
-       serverIn = new BufferedReader
-               (new InputStreamReader(s.getInputStream()));
-       userIn = new BufferedReader 
-               (new InputStreamReader(System.in));
-       serverOut = new PrintWriter
-               (s.getOutputStream(), true /* autoFlush */);
-       
-       String line = serverIn.readLine();
-		 System.out.println(line);
-		 boolean active;
-		 boolean done = false;
-		 if (line.equals("1"))
-			active = true;
-		 else
-			active = false;
+    try {
+    	serverIn = new BufferedReader(new InputStreamReader(s.getInputStream()));
+    	userIn = new BufferedReader(new InputStreamReader(System.in));
+    	serverOut = new PrintWriter(s.getOutputStream(), true);
+    	
+    	serverOut.println(newRet + "," + name);   	
+    	String line = serverIn.readLine();
+    	if(!line.equals("ack"))
+    		return line;
+    	serverOut.println(pass);
+		System.out.println(line);
+		return line;		
     }
     catch (IOException e) {
         System.out.println("Problem reading or writing:" + e.getMessage());
-     }
+        return "";
+    }
 
 	
 }}

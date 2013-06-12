@@ -70,7 +70,7 @@ public class GameManager {
 	private String movePiece(String choices){
 		if(dice.checkLastSums(choices)){
 			Scanner sc = new Scanner(choices);
-			sc.useDelimiter(", ");
+			sc.useDelimiter(",");
 			int choiceOne = sc.nextInt();
 			int choiceTwo = sc.nextInt();
 			int removed;

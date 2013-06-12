@@ -14,6 +14,7 @@ import javax.swing.border.EmptyBorder;
 
 public class LoginPanel extends JPanel {
 	private JTextField txtUsername, txtPassword;
+	private String newRet;
 	/**
 	 * Create the panel.
 	 */
@@ -24,7 +25,16 @@ public class LoginPanel extends JPanel {
 		add(btnNewButton);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e){
-				WindowManager.connect();
+				String response = WindowManager.connect(newRet, txtUsername.getText(), txtPassword.getText());
+				while(!response.equals("ack")){
+					if(response.equals("err,Duplicate User Name"))
+						txtUsername.setText("");
+					else if(response.equals("err,Unkown User"))
+						txtUsername.setText("");
+					else if(response.equals("err,Invalid Password"))
+						txtPassword.setText("");
+					response = WindowManager.connect(newRet, txtUsername.getText(), txtPassword.getText());
+				}
 				WindowManager.swap2();
 			};
 		});
@@ -49,10 +59,20 @@ public class LoginPanel extends JPanel {
 		JRadioButton rdbtnNewUser = new JRadioButton("New User");
 		rdbtnNewUser.setBounds(319, 512, 109, 23);
 		add(rdbtnNewUser);
+		rdbtnNewUser.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e){
+				newRet = "N";
+			};
+		});
 		
 		JRadioButton rdbtnReturningUser = new JRadioButton("Returning User");
 		rdbtnReturningUser.setBounds(319, 538, 119, 23);
 		add(rdbtnReturningUser);
+		rdbtnReturningUser.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e){
+				newRet = "R";
+			};
+		});
 		
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setBounds(10, 5, 686, 416);

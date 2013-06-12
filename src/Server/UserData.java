@@ -9,6 +9,7 @@ public class UserData {
 	private BufferedReader in;
 	private PrintWriter out;
 	private File file;
+	private String nameOne, nameTwo;
 	
 	public UserData(){
 		file = new File("users.txt");
@@ -29,7 +30,11 @@ public class UserData {
 			users = new ArrayList<String>();
 	}
 	
-	public String newUser(String name){
+	public String newUser(String name, int in){
+		if(in == 1)
+			nameOne = name;
+		else
+			nameTwo = name;
 		String temp;
 		int index = 0;
 		while(index < users.size()){
@@ -42,7 +47,11 @@ public class UserData {
 		return "ack";
 	}
 	
-	public String retUser(String name){
+	public String retUser(String name, int in){
+		if(in == 1)
+			nameOne = name;
+		else
+			nameTwo = name;
 		String temp;
 		int index = 0;
 		while(index < users.size()){
@@ -77,8 +86,12 @@ public class UserData {
 		return "err,Invalid Password";
 	}
 	
-	public String personalStats(String name, String result){
-		String tempOne;
+	public String personalStats(int in, String result){
+		String name, tempOne;
+		if(in == 1)
+			name = nameOne;
+		else
+			name = nameTwo;
 		String[] arr = new String[5];
 		int index = 0;
 		Scanner sc;
@@ -144,5 +157,37 @@ public class UserData {
 		return arr[highOne[0]][0] + "," + arr[highOne[0]][1] + "," + arr[highOne[0]][2] + "," + arr[highOne[0]][3] + "," + arr[highOne[0]][4]
 				+ "," + arr[highTwo[0]][0] + "," + arr[highTwo[0]][1] + "," + arr[highTwo[0]][2] + "," + arr[highTwo[0]][3] + "," + arr[highTwo[0]][4]
 				+ "," + arr[highThree[0]][0] + "," + arr[highThree[0]][1] + "," + arr[highThree[0]][2] + "," + arr[highThree[0]][3] + "," + arr[highThree[0]][4];
+	}
+	
+	public void saveUsers(){
+		if(file.exists()){
+			try{
+				file.delete();
+				file.createNewFile();
+				out = new PrintWriter(new FileWriter(file));
+				for(int i = 0; i < users.size(); i++){
+					out.println(users.get(i));
+				}
+			}
+			catch(IOException e){
+			}
+			finally{
+				out.close();
+			}
+		}
+		else{
+			try{
+				file.createNewFile();
+				out = new PrintWriter(new FileWriter(file));
+				for(int i = 0; i < users.size(); i++){
+					out.println(users.get(i));
+				}
+			}
+			catch(IOException e){
+			}
+			finally{
+				out.close();
+			}
+		}
 	}
 }
