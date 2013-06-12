@@ -37,6 +37,8 @@ public class WindowManager extends JFrame {
 	public static BufferedReader serverIn = null;
     public static BufferedReader userIn = null;
     public static PrintWriter serverOut = null;
+    public static boolean active;
+	public static boolean done = false;
 	/**
 	 * Launch the application.
 	 */
@@ -80,7 +82,7 @@ public static void swap2(){
 	
 
 	
-public static void connect(){
+public static void connect() throws IOException{
 	String host = "localhost";
     int port = 2043;
 
@@ -108,16 +110,38 @@ public static void connect(){
        
        String line = serverIn.readLine();
 		 System.out.println(line);
-		 boolean active;
-		 boolean done = false;
 		 if (line.equals("1"))
 			active = true;
 		 else
 			active = false;
-    }
-    catch (IOException e) {
+    } catch (IOException e) {
         System.out.println("Problem reading or writing:" + e.getMessage());
      }
+ 
+	String line;
+	while (!done){		
+		
+		if (active) {
+			line = userIn.readLine();
+			serverOut.println(line);
+			String temp = serverIn.readLine();
+			System.out.println(temp);
+			
+			if ((line.equals("stop") || line.equals("crap")) && (!temp.equals("err")))
+				active = false;
+		
+		}
+	
+		else{
+			line = serverIn.readLine();
+			System.out.println(line);
+			if (line.equals("go"))
+				active = true;
+			}
+		if(line.equals("you won") || line.equals("you lost"))
+			done = true;
+	}
+   
 
 	
 }}

@@ -19,6 +19,9 @@ public class CreateGameWindow extends JPanel {
 	private static JTextField txtBox;
 	private static JLabel roll1, roll2, roll3, roll4;
 	private static String diceRoll;
+	private static int place1, place2;
+	private static JLabel n201, n301, n401, n501, n601, n701, n801, n901, n1001, n1101, n1201;
+	private static String text;
 	/**
 	 * Create the panel.
 	 */
@@ -27,38 +30,40 @@ public class CreateGameWindow extends JPanel {
 		setLayout(null);
 		setBounds(0, 0, 706, 846);
 		
-		roll1 = new JLabel("Die1");
+		roll1 = new JLabel();
 		roll1.setBounds(64, 14, 126, 105);
 		add(roll1);
 			
-		roll2 = new JLabel("Die1");
+		roll2 = new JLabel();
 		roll2.setBounds(255, 14, 126, 105);
 		add(roll2);
 		
-		roll3 = new JLabel("Die3");
+		roll3 = new JLabel();
 		roll3.setBounds(416, 14, 126, 105);
 		add(roll3);
 		
-		roll4 = new JLabel("Die4");
+		roll4 = new JLabel();
 		roll4.setBounds(552, 11, 126, 105);
 		add(roll4);
 		
 		txtBox = new JTextField();
-		txtBox.setText(" Please enter your move choices:");
+		txtBox.setText("Please enter your move choices:");
 		txtBox.setBounds(204, 169, 269, 20);
 		add(txtBox);
 		txtBox.setColumns(10);
-		
+
 		JButton btnRoll = new JButton("Roll");
 		btnRoll.setBounds(9, 130, 134, 38);
 		add(btnRoll);
 		btnRoll.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e){
 				WindowManager.serverOut.println("roll");
+				
 				Scanner sc = new Scanner(WindowManager.serverIn);
 				
 				diceRoll = sc.nextLine();
-				String[] ar=diceRoll.split(", ");
+				System.out.println(diceRoll);
+				String[] ar=diceRoll.split(",");
 				int rollInt1 = Integer.parseInt(ar[0]);
 				int rollInt2 = Integer.parseInt(ar[1]);
 				int rollInt3 = Integer.parseInt(ar[2]);
@@ -159,6 +164,66 @@ public class CreateGameWindow extends JPanel {
 		JButton btnEnter = new JButton("Enter");
 		btnEnter.setBounds(552, 130, 134, 38);
 		add(btnEnter);
+		btnEnter.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e){
+				WindowManager.serverOut.println(txtBox.getText());
+				Scanner sc = new Scanner(WindowManager.serverIn);
+				try {
+					text = WindowManager.serverIn.readLine();
+
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+				if(text.equals("ack")){
+
+					System.out.println(txtBox.getText() + 4);
+					diceRoll = txtBox.getText();
+					String[] ar=diceRoll.split(",");
+					place1 = Integer.parseInt(ar[0]);
+					place2 = Integer.parseInt(ar[1]);
+					switch(place1){
+					case 2: 
+						n201.setIcon(new ImageIcon(CreateGameWindow.class.getResource("/GUI/p1Piece.png")));
+						break;
+					case 3:
+						n301.setIcon(new ImageIcon(CreateGameWindow.class.getResource("/GUI/p1Piece.png")));
+						break;
+					case 4:
+						n401.setIcon(new ImageIcon(CreateGameWindow.class.getResource("/GUI/p1Piece.png")));
+						break;
+					case 5:
+						n501.setIcon(new ImageIcon(CreateGameWindow.class.getResource("/GUI/p1Piece.png")));
+						break;
+					case 6:
+						n601.setIcon(new ImageIcon(CreateGameWindow.class.getResource("/GUI/p1Piece.png")));
+						break;
+					case 7:
+						n701.setIcon(new ImageIcon(CreateGameWindow.class.getResource("/GUI/p1Piece.png")));
+						break;
+					case 8:
+						n801.setIcon(new ImageIcon(CreateGameWindow.class.getResource("/GUI/p1Piece.png")));
+						break;
+					case 9:
+						n901.setIcon(new ImageIcon(CreateGameWindow.class.getResource("/GUI/p1Piece.png")));
+						break;
+					case 10:
+						n1001.setIcon(new ImageIcon(CreateGameWindow.class.getResource("/GUI/p1Piece.png")));
+						break;
+					case 11:
+						n1101.setIcon(new ImageIcon(CreateGameWindow.class.getResource("/GUI/p1Piece.png")));
+						break;
+					case 12:
+						n1201.setIcon(new ImageIcon(CreateGameWindow.class.getResource("/GUI/p1Piece.png")));
+						break;
+					}
+				}
+				else{
+					txtBox.setText("Error, please enter a correct roll");
+				}
+			};
+		});
 		
 		JButton btnCrap = new JButton("Crap");
 		btnCrap.setBounds(552, 181, 134, 38);
@@ -169,7 +234,7 @@ public class CreateGameWindow extends JPanel {
 			};
 		});
 		
-		JLabel n201 = new JLabel("");
+		n201 = new JLabel("");
 		n201.setBounds(442, 21, 0, 0);
 		add(n201);
 		
@@ -181,7 +246,7 @@ public class CreateGameWindow extends JPanel {
 		n203.setBounds(452, 21, 0, 0);
 		add(n203);
 		
-		JLabel n301 = new JLabel("");
+		n301 = new JLabel("");
 		n301.setBounds(457, 21, 0, 0);
 		add(n301);
 		
@@ -201,7 +266,7 @@ public class CreateGameWindow extends JPanel {
 		n305.setBounds(477, 21, 0, 0);
 		add(n305);
 		
-		JLabel n401 = new JLabel("");
+		n401 = new JLabel("");
 		n401.setBounds(482, 21, 0, 0);
 		add(n401);
 		
@@ -229,7 +294,7 @@ public class CreateGameWindow extends JPanel {
 		n407.setBounds(512, 21, 0, 0);
 		add(n407);
 		
-		JLabel n501 = new JLabel("");
+		n501 = new JLabel("");
 		n501.setBounds(517, 21, 0, 0);
 		add(n501);
 		
@@ -265,7 +330,7 @@ public class CreateGameWindow extends JPanel {
 		n509.setBounds(557, 21, 0, 0);
 		add(n509);
 		
-		JLabel n601 = new JLabel("");
+		n601 = new JLabel("");
 		n601.setBounds(562, 21, 0, 0);
 		add(n601);
 		
@@ -309,7 +374,7 @@ public class CreateGameWindow extends JPanel {
 		n611.setBounds(612, 21, 0, 0);
 		add(n611);
 		
-		JLabel n701 = new JLabel("");
+		n701 = new JLabel("");
 		n701.setBounds(617, 21, 0, 0);
 		add(n701);
 		
@@ -361,7 +426,7 @@ public class CreateGameWindow extends JPanel {
 		n713.setBounds(677, 21, 0, 0);
 		add(n713);
 		
-		JLabel n801 = new JLabel("");
+		n801 = new JLabel("");
 		n801.setBounds(682, 21, 0, 0);
 		add(n801);
 		
@@ -405,7 +470,7 @@ public class CreateGameWindow extends JPanel {
 		n811.setBounds(118, 355, 0, 0);
 		add(n811);
 		
-		JLabel n901 = new JLabel("");
+		n901 = new JLabel("");
 		n901.setBounds(123, 355, 0, 0);
 		add(n901);
 		
@@ -441,7 +506,7 @@ public class CreateGameWindow extends JPanel {
 		n909.setBounds(163, 355, 0, 0);
 		add(n909);
 		
-		JLabel n1001 = new JLabel("");
+		n1001 = new JLabel("");
 		n1001.setBounds(168, 355, 0, 0);
 		add(n1001);
 		
@@ -469,7 +534,7 @@ public class CreateGameWindow extends JPanel {
 		n1007.setBounds(198, 355, 0, 0);
 		add(n1007);
 		
-		JLabel n1101 = new JLabel("");
+		n1101 = new JLabel("");
 		n1101.setBounds(203, 355, 0, 0);
 		add(n1101);
 		
@@ -489,7 +554,7 @@ public class CreateGameWindow extends JPanel {
 		n1105.setBounds(223, 355, 0, 0);
 		add(n1105);
 		
-		JLabel n1201 = new JLabel("");
+		n1201 = new JLabel("");
 		n1201.setBounds(228, 355, 0, 0);
 		add(n1201);
 		
