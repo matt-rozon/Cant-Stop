@@ -1,6 +1,3 @@
-/**
- * 
- */
 package Server;
 
 /**
@@ -13,6 +10,7 @@ package Server;
 
 import java.io.*;
 import java.net.*;
+import java.util.ArrayList;
 
 public class IOManager {
 
@@ -40,8 +38,9 @@ public class IOManager {
 	        System.err.println("Accept failed: " + e.getMessage());
 	        System.exit(-1);
 	    }
-		
-		GameManager game = new GameManager();
+
+        GameManager game = new GameManager();
+        UserData users = new UserData();
 		BufferedReader inOne = null;
 	    PrintWriter outOne = null;
 	    BufferedReader inTwo = null;
@@ -59,6 +58,7 @@ public class IOManager {
 	        outOne.println("1");
 	        outTwo.println("2");
 	        
+
 	        boolean gameOver = false;
 	        boolean turnOver = false;
 	        String line = "";

@@ -1,6 +1,3 @@
-/**
- * 
- */
 package Server;
 
 /**
@@ -70,11 +67,13 @@ public class BoardManager {
 				if(board[columnNum - 2][i][player-1] != null && board[columnNum - 2][i][player-1].getPerm())
 					highestRow = i;
 			if(highestRow > rowNum)
-				board[columnNum - 2][highestRow][player-1] = newIn;
+				board[columnNum - 2][highestRow + 1][player-1] = newIn;
 			else if(rowNum >= board[columnNum - 2].length)
 				return false;
-			else
+			else if(rowNum == (board[columnNum - 2].length) - 1)
 				board[columnNum - 2][rowNum][player-1] = newIn;
+			else
+				board[columnNum - 2][rowNum + 1][player-1] = newIn;
 			tempCounter++;
 			return true;
 		}

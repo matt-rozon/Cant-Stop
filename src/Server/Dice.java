@@ -1,6 +1,3 @@
-/**
- * 
- */
 package Server;
 
 /**
@@ -35,7 +32,7 @@ public class Dice {
 		for(int i = 0; i < 4; i++){
 			rolls[i] = generator.nextInt(6) + 1;
 		}
-		return rolls[0] + ", " + rolls[1] + ", " + rolls[2] + ", " + rolls[3];
+		return rolls[0] + "," + rolls[1] + "," + rolls[2] + "," + rolls[3];
 		/*rolls[0] = generator.nextInt(6) + 1;
 		rolls[1] = generator.nextInt(6) + 1;
 		rolls[2] = generator.nextInt(6) + 1;
@@ -52,7 +49,7 @@ public class Dice {
 	public boolean checkLastSums(String choices){
 		int choiceOne, choiceTwo;
 		sc = new Scanner(choices);
-		sc.useDelimiter(", ");
+		sc.useDelimiter(",");
 		
 		if(sc.hasNextInt())
 			choiceOne = sc.nextInt();
